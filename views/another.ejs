@@ -1,0 +1,46 @@
+<%- include("partials/header.ejs") %>
+    <div class="bbox">
+        <div class="box">
+            <h1>Weekend</h1>
+            <div class="item">
+                <input type="checkbox" name=checkbox>
+                <p>Cleaning</p>
+            </div>
+            <div class="item">
+                <input type="checkbox" name=checkbox>
+                <p>Washing </p>
+            </div>
+            <div class="item">
+                <input type="checkbox" name=checkbox>
+                <p>Bathing</p>
+            </div>
+            <% if(locals.task){ %>
+                <div class="item">
+                    <input type="checkbox" name=checkbox>
+                    <p>
+                        <%= task%>
+                    </p>
+                </div>
+                <% } %>
+                    <form class="item" action="/anotherSubmit" method="post">
+                        <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+                        <button type="submit" name="list">+</button>
+                    </form>
+        </div>
+    </div>
+    <%- include("partials/footer.ejs") %>
+
+        <script>
+            var checkboxes = document.querySelectorAll("input[name=checkbox]");
+            for (var i = 0; i < checkboxes.length; i++) {
+                checkboxes[i].addEventListener('change', function () {
+                    var index = Array.from(checkboxes).indexOf(this);
+                    if (this.checked) {
+                        document.querySelectorAll("p")[index].style.textDecoration = "line-through";
+                    } else {
+                        document.querySelectorAll("p")[index].style.textDecoration = "none";
+                    }
+                });
+            }
+
+        </script>

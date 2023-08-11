@@ -1,0 +1,42 @@
+body {
+    font-family: serif;
+    color: blue;
+}
+
+header,
+footer {
+    background-color: #F1F0E8;
+}
+
+.bbox {
+    background-color: aquamarine;
+    display: flex;
+    height: 87vh;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem;
+    border-radius: 2rem;
+    background-color: aqua;
+}
+
+.item {
+    display: flex;
+}
+
+p {
+    margin-bottom: 0;
+    margin-left: 2rem;
+}
+
+footer {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
