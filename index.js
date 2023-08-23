@@ -8,22 +8,33 @@ app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+const posts = [];
+const anotherPosts = [];
+
 app.get("/", (req, res) => {
-    res.render("index.ejs");
+    res.render("index.ejs", {
+        posts: posts
+    });
 });
 app.get("/another", (req, res) => {
-    res.render("another.ejs");
+    res.render("another.ejs", {
+        anotherPosts: anotherPosts
+    });
 });
 
 app.post("/submit", (req, res) => {
-    res.render("index.ejs", {
+    const post = {
         task: req.body['newItem']
-    })
+    }
+    posts.push(post);
+    res.redirect("/");
 })
 app.post("/anotherSubmit", (req, res) => {
-    res.render("another.ejs", {
+    const post = {
         task: req.body['newItem']
-    })
+    }
+    anotherPosts.push(post);
+    res.redirect("/another");
 })
 
 app.listen(port, () => {

@@ -14,18 +14,20 @@
                 <input type="checkbox" name=checkbox>
                 <p>Lab work</p>
             </div>
-            <% if(locals.task){ %>
-                <div class="item">
-                    <input type="checkbox" name=checkbox>
-                    <p>
-                        <%= task%>
-                    </p>
-                </div>
-                <% } %>
-                    <form class="item" action="/submit" method="post">
-                        <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
-                        <button type="submit" name="list">+</button>
-                    </form>
+            <% if(locals.posts){ %>
+                <% posts.forEach((post)=>{ %>
+                    <div class="item">
+                        <input type="checkbox" name=checkbox>
+                        <p>
+                            <%= post.task %>
+                        </p>
+                    </div>
+                    <% }); %>
+                        <% } %>
+                            <form class="item" action="/submit" method="post">
+                                <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+                                <button type="submit" name="list">+</button>
+                            </form>
         </div>
     </div>
 
