@@ -5,7 +5,6 @@ const app = express();
 const port = 3000;
 
 app.use(express.static("public"));
-
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const posts = [];
@@ -16,6 +15,7 @@ app.get("/", (req, res) => {
         posts: posts
     });
 });
+
 app.get("/another", (req, res) => {
     res.render("another.ejs", {
         anotherPosts: anotherPosts
@@ -29,6 +29,7 @@ app.post("/submit", (req, res) => {
     posts.push(post);
     res.redirect("/");
 })
+
 app.post("/anotherSubmit", (req, res) => {
     const post = {
         task: req.body['newItem']
